@@ -1,0 +1,34 @@
+# Set FreeSurfer subjects path, recon-all processed
+export SUBJECTS_DIR=$PWD
+
+# list all the subjects directory
+list="`ls -d */`"
+
+# Gray matter volume:
+aparcstats2table --subjects $list --hemi lh --meas volume --skip --tablefile GM_lh.txt
+aparcstats2table --subjects $list --hemi rh --meas volume --skip --tablefile GM_rh.txt
+
+# Cortical thickness:
+aparcstats2table --subjects $list --hemi lh --meas thickness --skip --tablefile CT_lh.txt
+aparcstats2table --subjects $list --hemi rh --meas thickness --skip --tablefile CT_rh.txt
+
+# surface area:
+aparcstats2table --subjects $list --hemi lh --meas area --skip --tablefile SA_lh.txt
+aparcstats2table --subjects $list --hemi rh --meas area --skip --tablefile SA_rh.txt
+
+# folding index
+aparcstats2table --subjects $list --hemi lh --meas foldind --tablefile FI_lh.txt
+aparcstats2table --subjects $list --hemi rh --meas foldind --tablefile FI_rh.txt
+
+# curvature index
+aparcstats2table --subjects $list --hemi lh --meas curvind --tablefile CI_lh.txt
+aparcstats2table --subjects $list --hemi rh --meas curvind --tablefile CI_rh.txt
+
+# mean curvature
+aparcstats2table --subjects $list --hemi lh --meas meancurv --tablefile MC_lh.txt
+aparcstats2table --subjects $list --hemi rh --meas meancurv --tablefile MC_rh.txt
+
+# Intrinsic (Gaussian) curvature
+aparcstats2table --subjects $list --hemi lh --meas gauscurv --tablefile IC_lh.txt
+aparcstats2table --subjects $list --hemi rh --meas gauscurv --tablefile IC_rh.txt
+
